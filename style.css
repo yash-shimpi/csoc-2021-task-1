@@ -1,0 +1,172 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size)*0.9);
+}
+
+body {
+    margin:0;
+    background-color: rgb(168, 213, 243);
+}
+
+.board {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto)
+}
+
+.cell{
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: rgb(175, 248, 181);
+    border: 2px solid rgb(43, 2, 82);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+
+
+.cell.x,
+.cell.o {
+    cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after,
+.cell.o::before {
+  background-color: black;
+}
+
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::before {
+  background-color: lightgrey;
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after 
+{
+    content:'';
+    position: absolute;
+    width: calc(var(--mark-size)*0.15);
+    height: var(--mark-size);
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before{
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after{
+    transform: rotate(-45deg);
+}
+
+.cell.o::before,
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after {
+    content:'';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.cell.o::before,
+.board.o .cell:not(.x):not(.o):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+}
+
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::after {
+    width: calc(var(--mark-size)*0.7);
+    height:calc(var(--mark-size)*0.7);
+    background-color: rgba(175, 248, 220, 1);
+}
+
+.winning-message{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(111, 241, 209, 0.85);
+    justify-content: center;
+    align-items: center;
+    color: rgb(240, 15, 240);
+    font-size: 5rem;
+    flex-direction: column;
+}
+
+.winning-message button,
+.double-player button,
+.single-player button
+{
+    font-size: 3rem;
+    background-color: white;
+    border-color: 1px solid black;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.winning-message button:hover,
+.double-player button:hover,
+.single-player button:hover
+{
+    background-color: black;
+    color: white;
+    border-color: white;
+    
+}
+
+.winning-message.show{
+    display: flex;
+}
+
+.buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    flex-direction: column;
+}
+
+.replayButton {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    flex-direction: column;
+    border-radius: 30px;
+    background-color: rgb(236, 140, 140);
+    color: rgb(37, 1, 37);
+
+}
+
+.replayButton:hover {
+        background-color: black;
+        color: white;
+        border-color: white;
+    }
+

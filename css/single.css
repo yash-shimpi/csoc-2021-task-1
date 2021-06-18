@@ -1,0 +1,70 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size)*0.9);
+}
+
+body {
+    margin:0;
+    background-color: rgb(168, 243, 178);
+}
+
+td {
+    border: 2px solid rgb(43, 2, 82);
+	height:  100px;
+	width:  100px;
+	text-align:  center;
+	vertical-align:  middle;
+	font-size:  70px;
+	cursor: pointer;
+    background-color: rgb(175, 248, 220);
+
+}
+
+table {
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+	position: absolute;
+	left: 50%;
+	margin-left: -155px;
+	top: 30%
+}
+
+.endgame {
+  display: none;
+  width: 200px;
+  top: 120px;
+  background-color: rgba(205,133,63, 0.8);
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-size: 2em;
+}
+
+.button {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    flex-direction: column;
+    border-radius: 30px;
+}
+
+.button:hover {
+        background-color: black;
+        color: white;
+        border-color: white;
+    }
